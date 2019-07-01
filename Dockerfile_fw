@@ -1,23 +1,24 @@
 FROM node:alpine
-RUN apk add --no-cache git bash curl
+RUN apk add --no-cache git bash
+#RUN apk add --no-cache curl dos2unix
 
 WORKDIR /usr/src/app
-# COPY app/ .
-RUN git clone https://github.com/flow23/zcs_tpm.git .
+COPY app/ .
+#RUN git clone https://github.com/flow23/zcs_tpm.git .
 #WORKDIR openui5-sample-app
 
 # Install UI5 tooling
 RUN npm config set @sap:registry "https://npm.sap.com" -g
 RUN npm install --global @ui5/cli
-# RUN npm init --yes
-RUN ui5 init
 
-# Install node.js project dependencies from package.json
-RUN npm install
-
-# ???
-RUN npm install @openui5/sap.ui.core @openui5/themelib_sap_belize 
-
-# Serve the app
+# Exposing port 8080
 EXPOSE 8080
-CMD [ "ui5" , "serve", "--accept-remote-connections" ]
+
+# docker-entrypoint Geraffel
+COPY ./docker-entrypoint.sh /
+#RUN dos2unix /docker-entrypoint.sh
+RUN chmod +x /docker-entrypoint.sh
+#RUN chmod +x /docker-entrypoint.sh
+RUN apk del git
+#RUN apk del curl dos2unix
+ENTRYPOINT ["/docker-entrypoint.sh"]
