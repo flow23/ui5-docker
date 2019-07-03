@@ -2,7 +2,8 @@ FROM node:alpine
 RUN apk add --no-cache git bash
 #RUN apk add --no-cache curl dos2unix
 
-WORKDIR /usr/src/app
+ENV APP_DIR = /usr/src/app
+WORKDIR $APP_DIR
 COPY app/ .
 #RUN git clone https://github.com/flow23/zcs_tpm.git .
 #WORKDIR openui5-sample-app
