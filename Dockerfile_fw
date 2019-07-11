@@ -5,8 +5,7 @@ RUN apk add --no-cache git bash
 ENV APP_DIR=/usr/src/app
 WORKDIR $APP_DIR
 COPY app/ .
-#RUN git clone https://github.com/flow23/zcs_tpm.git .
-#WORKDIR openui5-sample-app
+COPY Gruntfile_fw.js .
 
 # Install UI5 tooling
 RUN npm config set @sap:registry "https://npm.sap.com" -g
@@ -15,11 +14,9 @@ RUN npm install --global @ui5/cli
 # Exposing port 8080
 EXPOSE 8080
 
-# docker-entrypoint Geraffel
+# docker-entrypoint
 COPY ./docker-entrypoint.sh /
-#RUN dos2unix /docker-entrypoint.sh
 RUN chmod +x /docker-entrypoint.sh
-#RUN chmod +x /docker-entrypoint.sh
 RUN apk del git
-#RUN apk del curl dos2unix
+
 ENTRYPOINT ["/docker-entrypoint.sh"]
