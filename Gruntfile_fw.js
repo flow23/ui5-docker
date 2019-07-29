@@ -7,7 +7,7 @@ module.exports = function (grunt) {
         'string-replace': {
             inline: {
               files: {
-                'test/flpSandboxMockServer.html': 'test/flpSandboxMockServer.html',
+                'webapp/test/flpSandboxMockServer.html': 'webapp/test/flpSandboxMockServer.html',
               },
               options: {
                 replacements: [
@@ -17,7 +17,7 @@ module.exports = function (grunt) {
                   },
                   {
                     pattern: 'src="../resources/sap-ui-core.js"',
-                    replacement: 'src="https://openui5.hana.ondemand.com/resources/sap-ui-core.js"'
+                    replacement: 'src="https://sapui5.hana.ondemand.com/resources/sap-ui-core.js"'
                   },
                 ]
               }

@@ -25,7 +25,9 @@ npm audit fix
 
 # UI5 specific stuff
 echo "2 # SAP #"
-npm install -g grunt-cli grunt-string-replace
+npm install -g grunt-cli 
+npm install grunt --save-dev
+npm install grunt-string-replace --save-dev
 npm install @openui5/sap.ui.core @openui5/themelib_sap_belize
 echo "2 ## Audit fix ##"
 npm audit fix
