@@ -25,7 +25,7 @@ npm audit fix
 
 # UI5 specific stuff
 echo "2 # SAP #"
-npm install -g grunt-cli 
+npm install --global grunt-cli
 npm install grunt --save-dev
 npm install grunt-string-replace --save-dev
 npm install @openui5/sap.ui.core @openui5/themelib_sap_belize
@@ -34,7 +34,9 @@ npm audit fix
 
 # Grunt
 echo "3 # Grunt #"
-grunt --gruntfile Gruntfile_fw.js -d string-replace
+cd node_modules/grunt/bin/
+./grunt -d -v --gruntfile /usr/src/util/Gruntfile_fw.js
+cd "${APP_DIR}"
 
 # Start node server
 echo "4 # Serve the app #"
