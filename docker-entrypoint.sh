@@ -32,12 +32,13 @@ npm install @openui5/sap.ui.core @openui5/themelib_sap_belize
 echo "2 ## Audit fix ##"
 npm audit fix
 
-# Grunt
-echo "3 # Grunt #"
-cd node_modules/grunt/bin/
-./grunt -d -v --gruntfile /usr/src/util/Gruntfile_fw.js
-cd "${APP_DIR}"
+# Symlinking and downloading
+echo "3 # Symlinking #"
+mkdir -p resources test-resources/sap/ushell/bootstrap
+ln -s /usr/src/app/node_modules/@openui5/sap.ui.core/src/sap-ui-core.js resources/sap-ui-core.js
+wget -O /usr/src/util/sandbox.js "https://sapui5.hana.ondemand.com/test-resources/sap/ushell/bootstrap/sandbox.js"
+ln -s /usr/src/util/sandbox.js test-resources/sap/ushell/bootstrap/sandbox.js
 
 # Start node server
 echo "4 # Serve the app #"
-exec ui5 serve --accept-remote-connections
+exec ui5 serve --accept-remote-connections --open test/flpSandboxMockServer.html
