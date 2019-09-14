@@ -4,7 +4,6 @@ RUN apk add --no-cache git bash wget
 ENV APP_DIR=/usr/src/app
 WORKDIR $APP_DIR
 COPY app/ .
-#COPY Gruntfile_fw.js /usr/src/util/Gruntfile_fw.js
 
 # Install UI5 tooling
 RUN npm config set @sap:registry "https://npm.sap.com" -g
