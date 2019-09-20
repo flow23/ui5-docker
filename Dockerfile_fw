@@ -1,7 +1,8 @@
 FROM node:alpine
-RUN apk add --no-cache git bash wget
+RUN apk add --no-cache bash wget unzip
 
 ENV APP_DIR=/usr/src/app
+ENV SAPUI5_VERSION=1.60.5
 WORKDIR $APP_DIR
 COPY app/ .
 
@@ -15,6 +16,5 @@ EXPOSE 8080
 # docker-entrypoint
 COPY ./docker-entrypoint.sh /
 RUN chmod +x /docker-entrypoint.sh
-RUN apk del git
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
