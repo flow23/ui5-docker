@@ -29,15 +29,6 @@ npm install @openui5/sap.ui.core @openui5/themelib_sap_belize
 echo "2 ## Audit fix ##"
 npm audit fix
 
-# Symlinking and downloading
-echo "3 # Downloading SAP UI5 runtime #"
-# -nv no verbose, -v verbose
-wget -v --output-document=/tmp/sapui5-rt-${SAPUI5_VERSION}.zip \
---no-cookies --header "Cookie: eula_3_1_agreed=tools.hana.ondemand.com/developer-license-3_1.txt" \
-https://tools.hana.ondemand.com/additional/sapui5-rt-${SAPUI5_VERSION}.zip
-mkdir -p ${APP_DIR}/webapp/resources
-unzip /tmp/sapui5-rt-${SAPUI5_VERSION}.zip -d ${APP_DIR}/webapp
-
 # Cleanup
 apk del wget unzip
 

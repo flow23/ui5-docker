@@ -1,19 +1,26 @@
 FROM node:alpine
-RUN apk add --no-cache git bash
+RUN apk add --no-cache bash wget unzip
 
-WORKDIR /usr/src/app
-# COPY webapp/ .
-RUN git clone https://github.com/SAP/openui5-sample-app.git
-WORKDIR openui5-sample-app
-# Install node.js project dependencies from package.json
-RUN npm install
+ENV APP_DIR=/usr/src/app
+ENV SAPUI5_VERSION=1.69.0
+WORKDIR $APP_DIR
+COPY app/ .
 
 # Install UI5 tooling
+RUN npm config set @sap:registry "https://npm.sap.com" -g
 RUN npm install --global @ui5/cli
 
-# Verify installation
-#RUN ui5 --help
+# SAP UI5 downloading
+RUN wget -nv --output-document=/tmp/sapui5-rt-${SAPUI5_VERSION}.zip \
+    --no-cookies --header "Cookie: eula_3_1_agreed=tools.hana.ondemand.com/developer-license-3_1.txt" \
+    https://tools.hana.ondemand.com/additional/sapui5-rt-${SAPUI5_VERSION}.zip
+RUN unzip /tmp/sapui5-rt-${SAPUI5_VERSION}.zip
 
-# Serve the app
+# Exposing port 8080
 EXPOSE 8080
-CMD [ "ui5" , "serve", "--accept-remote-connections" ]
+
+# docker-entrypoint
+COPY ./docker-entrypoint.sh /
+RUN chmod +x /docker-entrypoint.sh
+
+ENTRYPOINT ["/docker-entrypoint.sh"]
