@@ -2,11 +2,11 @@ FROM node:alpine
 RUN apk add --no-cache bash wget unzip
 
 ENV APP_DIR=/usr/src/app
-ENV SAPUI5_VERSION=1.69.0
+ENV SAPUI5_VERSION=1.60.5
 WORKDIR $APP_DIR
 COPY app/ .
 
-# Install UI5 tooling
+# Install UI5 toolinggit
 RUN npm config set @sap:registry "https://npm.sap.com" -g
 RUN npm install --global @ui5/cli
 
