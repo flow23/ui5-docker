@@ -6,7 +6,7 @@ ENV SAPUI5_VERSION=1.60.5
 WORKDIR $APP_DIR
 COPY app/ .
 
-# Install UI5 toolinggit
+# Install UI5 tooling
 RUN npm config set @sap:registry "https://npm.sap.com" -g
 RUN npm install --global @ui5/cli
 
