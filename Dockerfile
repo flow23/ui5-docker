@@ -13,8 +13,8 @@ RUN npm install --global @ui5/cli
 # SAP UI5 downloading
 RUN wget -nv --output-document=/tmp/sapui5-rt-${SAPUI5_VERSION}.zip \
     --no-cookies --header "Cookie: eula_3_1_agreed=tools.hana.ondemand.com/developer-license-3_1.txt" \
-    https://tools.hana.ondemand.com/additional/sapui5-rt-${SAPUI5_VERSION}.zip
-RUN unzip /tmp/sapui5-rt-${SAPUI5_VERSION}.zip
+    https://tools.hana.ondemand.com/additional/sapui5-sdk-${SAPUI5_VERSION}.zip
+RUN unzip /tmp/sapui5-sdk-${SAPUI5_VERSION}.zip && rm /tmp/sapui5-sdk-${SAPUI5_VERSION}.zip
 
 # Exposing port 8080
 EXPOSE 8080
