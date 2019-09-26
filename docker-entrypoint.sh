@@ -30,8 +30,9 @@ echo "2 ## Audit fix ##"
 npm audit fix
 
 # Cleanup
+echo "3 # Cleanup #"
 apk del wget unzip
 
 # Start node server
 echo "4 # Serve the app #"
-exec ui5 serve --accept-remote-connections --open test/flpSandboxMockServer.html
+exec ui5 serve --verbose --accept-remote-connections --open test/flpSandboxMockServer.html
