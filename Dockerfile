@@ -6,7 +6,7 @@ ENV SAPUI5_VERSION=1.69.0
 ENV SAPUI5_SDK_ZIP=sapui5-sdk-${SAPUI5_VERSION}.zip
 ENV SAPUI5_RT_ZIP=sapui5-rt-${SAPUI5_VERSION}.zip
 WORKDIR ${APP_DIR}
-COPY app/ .
+#COPY app/ .
 
 # Install UI5 tooling
 RUN npm config set @sap:registry "https://npm.sap.com" -g
@@ -17,9 +17,9 @@ RUN wget -nv --output-document=/tmp/${SAPUI5_SDK_ZIP} \
     #--no-cookies \
     --header "Cookie: eula_3_1_agreed=tools.hana.ondemand.com/developer-license-3_1.txt" \
     https://tools.hana.ondemand.com/additional/${SAPUI5_SDK_ZIP} \
-    && cd /tmp \
+    && cd webapp \
     && unzip -q /tmp/${SAPUI5_SDK_ZIP} \
-    #&& rm /tmp/${SAPUI5_SDK_ZIP} \
+    && rm /tmp/${SAPUI5_SDK_ZIP} \
     && cd ${APP_DIR}
 
 # Exposing port 8080
