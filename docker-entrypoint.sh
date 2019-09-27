@@ -24,15 +24,12 @@ npm audit fix
 
 # UI5 specific stuff
 echo "2 # SAP #"
-#npm install @openui5/sap.ui.core @openui5/themelib_sap_belize
 echo "2 ## Audit fix ##"
 #npm audit fix
 
 # Cleanup
 echo "3 # Cleanup #"
 apk del wget unzip
-#ln -s /tmp/resources /usr/src/app/resources
-#ln -s /tmp/test-resources /usr/src/app/test-resources 
 
 # Start node server
 echo "4 # Serve the app #"

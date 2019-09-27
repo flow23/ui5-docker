@@ -6,7 +6,7 @@ ENV SAPUI5_VERSION=1.69.0
 ENV SAPUI5_SDK_ZIP=sapui5-sdk-${SAPUI5_VERSION}.zip
 ENV SAPUI5_RT_ZIP=sapui5-rt-${SAPUI5_VERSION}.zip
 WORKDIR ${APP_DIR}
-#COPY app/ .
+RUN mkdir -p webapp
 
 # Install UI5 tooling
 RUN npm config set @sap:registry "https://npm.sap.com" -g
