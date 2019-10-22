@@ -1,2 +1,2 @@
 #!/bin/bash
-docker build -t ui5-ide-docker:DOCKER_TAG --build-arg SAPUI5_VERSION=DOCKER_TAG .
+docker build -t ui5-ide-docker:DOCKER_TAG-sdk --build-arg SAPUI5_VERSION=DOCKER_TAG --build-arg SAPUI5_COMPONENT=$SAPUI5_COMPONENT .
