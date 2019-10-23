@@ -1,2 +1,2 @@
 #!/bin/bash
-docker build -t ui5-ide-docker:DOCKER_TAG-sdk --build-arg SAPUI5_VERSION=DOCKER_TAG --build-arg SAPUI5_COMPONENT=$SAPUI5_COMPONENT .
+docker build --buildarg SAPUI5_VERSION=$SOURCE_BRANCH --build-arg DOCKER_TAG=$DOCKER_TAG --build-arg SAPUI5_COMPONENT=$SAPUI5_COMPONENT -f $DOCKERFILE_PATH -t $IMAGE_NAME .
