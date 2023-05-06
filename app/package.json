@@ -20,12 +20,12 @@
     "@openui5/themelib_sap_fiori_3": "^1.67.1"
   },
   "devDependencies": {
-    "@ui5/cli": "^1.5.4",
+    "@ui5/cli": "^3.1.2",
     "eslint": "^5.16.0",
     "karma": "^4.0.1",
     "karma-chrome-launcher": "^2.2.0",
     "karma-coverage": "^1.1.2",
-    "karma-ui5": "^1.0.0",
+    "karma-ui5": "^3.0.3",
     "local-web-server": "^3.0.3",
     "rimraf": "^2.6.2"
   }
